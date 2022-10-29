@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('employee_education_info', function (Blueprint $table) {
             $table->id();
+            $table->integer('education_grade_id');
+            $table->string('education_intitution_name');
+            $table->integer('graduation_year');
+            $table->string('status');
             $table->timestamps();
         });
     }

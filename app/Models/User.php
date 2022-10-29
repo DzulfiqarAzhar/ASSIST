@@ -20,7 +20,13 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'email_verified_at',
+        'role_id',
+        'group_id',
         'password',
+        'locked',
+        'created_by',
+        'updated_by',
     ];
 
     /**
@@ -41,4 +47,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role() {
+        return $this->belongsTo(Role::class)
+            ->withDefault(function () {
+                return new role();
+            });
+    }
+
+    public function group() {
+        return $this->belongsTo(Group::class)
+        ->withDefault(function () {
+            return new group();
+        });
+    }
 }

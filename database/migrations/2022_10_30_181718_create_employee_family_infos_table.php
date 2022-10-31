@@ -13,8 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('employee_work_experience', function (Blueprint $table) {
+        Schema::create('employee_family_infos', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->string('name');
+            $table->string('national_id');
+            $table->date('dob');
+            $table->integer('relation_type');
+            $table->integer('work_status');
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employee_work_experience');
+        Schema::dropIfExists('employee_family_infos');
     }
 };
